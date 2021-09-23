@@ -1,10 +1,47 @@
+
 --Obtener un reporte de edades de los empleados para checar su elegibilidad para seguro de gastos médicos menores
+select e.first_name, e.last_name, age(now(), e.birth_date)
+from employees e ;
+
 --Cuál es la orden más reciente por cliente?
+select  max(o.order_date), c.contact_name 
+from orders o join customers c on (c.customer_id=o.customer_id) 
+group by o.order_date, c.contact_name 
+order by o.order_date asc;
+
 --De nuestros clientes, qué función desempeñan y cuántos son?
+select c.contact_title, count(c.contact_title) 
+from customers c 
+group by c.contact_title
+order by count(c.contact_title) desc ;
+
 --Cuántos productos tenemos de cada categoría?
---Cómo podemos generar el reporte de reorder?
+select c.category_name, count (c.category_id)
+from products p join categories c on(p.category_id=c.category_id)
+group by c.category_id, c.category_name;
+
 --A donde va nuestro envío más voluminoso?
+select  o.ship_country, o.ship_city, o.ship_address, od.quantity 
+from order_details od join orders o on od.order_id =o.order_id
+order by od.quantity desc limit 1;
+
 --Cómo creamos una columna en customers que nos diga si un cliente es bueno, regular, o malo?
---Qué colaboradores chambearon durante las fiestas de navidad?
+--La podemos crear en customers
+alter table customers 
+add column calidad varchar(8) default 'regular';
+
+--Qué colaboradores (empleados?) chambearon durante las fiestas de navidad?
+select  e.first_name, e.last_name 
+from employees e join orders o on e.employee_id =o.employee_id
+where extract(month from o.shipped_date) = 12 and extract(day from o.shipped_date) = 25;
+
 --Qué productos mandamos en navidad?
+select p.product_name 
+from products p join order_details od on p.product_id =od.product_id join orders o on (od.order_id =o.order_id )
+where extract(month from o.shipped_date) = 12 and extract(day from o.shipped_date) = 25
+group by p.product_name, o.order_date;
+
 --Qué país recibe el mayor volumen de producto?
+select  o.ship_country, o.freight 
+from orders o 
+order by o.freight desc limit 1;
