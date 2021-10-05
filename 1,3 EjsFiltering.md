@@ -40,7 +40,7 @@ create table mcu.gym(
 
 
 insert into mcu.gym(nombre, email) values 
-('Wanda Maximoff',	'wanda.maximoff@avengers.org'), 
+('Wanda Maximoff', 'wanda.maximoff@avengers.org'), 
 ('Pietro Maximoff', 'pietro@mail.sokovia.ru'),
 ('Erik Lensherr', 'fuck_you_charles@brotherhood.of.evil.mutants.space'),
 ('Charles Xavier', 'i.am.secretely.filled.with.hubris@xavier-school-4-gifted-youngste.'),
