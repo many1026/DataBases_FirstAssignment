@@ -1,4 +1,6 @@
---Cuales pagos no son del cliente con ID 5, y cuyo monto sea mayor a 8 o cuya fecha sea 23 de Agosto de 2005?
+# Filtering Assignment 5/10/2021
+
+--¿Cuáles pagos no son del cliente con ID 5, y cuyo monto sea mayor a 8 o cuya fecha sea 23 de Agosto de 2005?
 
 ```sql
 select *
@@ -8,20 +10,20 @@ and p.amount > 8)
 or p.payment_date between '2005-08-23 00:00:00' and '2005-08-23 23:59:59';
 ```
 
---Cuales pagos son del cliente con ID 5 y cuyo monto no sea mayor a 6 y su fecha tampoco sea del 19 de Junio de 2005?
+--¿Cuáles pagos son del cliente con ID 5 y cuyo monto no sea mayor a 6 y su fecha tampoco sea del 19 de Junio de 2005?
 ```sql
 select *
 from payment p
 where p.customer_id = 5 and p.amount <= 6 and p.payment_date not between '2005-06-19 00:00:00' and '2005-06-19 23:59:59';
 ```
---Cuales pagos tienen el monto 1.98, 7.98 o 9.98?
+--¿Cuáles pagos tienen el monto 1.98, 7.98 o 9.98?
 ```sql
 select *
 from payment p
 where p.amount = 1.98 or p.amount = 7.98 or p.amount = 9.98; 
 ```
 
---Cuales la suma total pagada por los clientes que tienen una letra A en la segunda posición de su apellido y una W en cualquier lugar después de la A?
+--¿Cuáles la suma total pagada por los clientes que tienen una letra A en la segunda posición de su apellido y una W en cualquier lugar después de la A?
 ```sql
 select sum(p.amount) 
 from payment p join customer c on p.customer_id = c.customer_id 
@@ -57,6 +59,7 @@ insert into mcu.gym(nombre, email) values
 ('Gamora', 'thefiercestwomaninthegalaxy@thanos.'),
 ('Rocket', 'shhhhhhhh@darknet.ru');
 ```
+
 ```sql
 select g.email 
 from mcu.gym g 
