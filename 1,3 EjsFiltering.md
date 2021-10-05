@@ -59,7 +59,7 @@ insert into mcu.gym(nombre, email) values
 ('Gamora', 'thefiercestwomaninthegalaxy@thanos.'),
 ('Rocket', 'shhhhhhhh@darknet.ru');
 ```
-
+--Query que valide los emails
 ```sql
 select g.email 
 from mcu.gym g 
