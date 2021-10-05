@@ -38,7 +38,6 @@ create table mcu.gym(
 	email varchar(100)
 );
 
-
 insert into mcu.gym(nombre, email) values 
 ('Wanda Maximoff', 'wanda.maximoff@avengers.org'), 
 ('Pietro Maximoff', 'pietro@mail.sokovia.ru'),
