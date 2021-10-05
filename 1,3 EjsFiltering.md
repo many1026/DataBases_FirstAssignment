@@ -60,5 +60,5 @@ insert into mcu.gym(nombre, email) values
 ```sql
 select g.email 
 from mcu.gym g 
-where g.email like '%@%.___%';
+where g.email not like '%@%.__%';
 ```
